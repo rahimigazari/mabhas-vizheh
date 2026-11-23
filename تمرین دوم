@@ -1,0 +1,18 @@
+def encrypt(text, k):
+    res = ""
+    for c in text:
+        if c.isalpha():
+            base = ord('A') if c.isupper() else ord('a')
+            res += chr((ord(c) - base + k) % 26 + base)
+        else:
+            res += c
+    return res
+
+def decrypt(text, k):
+    return encrypt(text, -k)
+
+t = input()
+k = int(input())
+enc = encrypt(t, k)
+print(enc)
+print(decrypt(enc, k))
